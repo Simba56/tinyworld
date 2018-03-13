@@ -10,7 +10,6 @@ context test1 {
 
 entity country1{
  key name : String(100);
-partof : Association[0..1] to world1;
 };
 
 
