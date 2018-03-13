@@ -10,7 +10,7 @@ context test1 {
 
 entity country1{
  key name : String(100);
-};
+}; 
 
 
 
