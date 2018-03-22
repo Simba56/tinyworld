@@ -7,36 +7,19 @@
 <!-- 1.) Load SAPUI5 (from a remote server), select theme and control library -->
 <script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
 	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m,sap.ui.commons,sap.ui.table"
-	data-sap-ui-theme="sap_bluecrystal">
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-resourceroots='{
+            "sap.ui.demo.walkthrough": "./"
+         }' >
 		</script>
 <!-- 2.) Create a UI5 button and place it onto the page -->
-<script src="./Util.js" > </script>
-<script>
-	// create the button instance
-/*	var myButton = new sap.m.Button("btn");
-
-	// set properties, e.g. the text (there is also a shorter way of setting several properties)
-	myButton.setText("Hello World!");
-
-	// attach an action to the button's "press" event (use jQuery to fade out the button)
-	myButton.attachPress(function(){$("#btn").fadeOut()});
-
-	// place the button into the HTML element defined below
-	myButton.placeAt("uiArea");*/
-	var oModel = new sap.ui.model.odata.ODataModel("/euro.xsodata", true);
-
-  var oTable = new sap.ui.table.Table({ title: "European Countries", visibleRowCount: 5, id: "tinytab",
-
-              toolbar: new sap.ui.commons.Toolbar({items: [
-
-              new sap.ui.commons.Button({text: "Add Country", press:openFirstDialog})
-
-       ]})});
-
-  oTable.addColumn(new sap.ui.table.Column({ label: "Country Name", template: "name" }));
-
-  oTable.setModel(oModel); oTable.bindRows("/euro"); oTable.placeAt("content");
-	</script>
+ <script>
+         sap.ui.getCore().attachInit(function () {
+            sap.ui.xmlview({
+               viewName : "sap.ui.demo.walkthrough.view.App"
+            }).placeAt("content");
+         });
+      </script>
 </head>
 <body class="sapUiBody">
 	<!-- This is where you place the UI5 button -->
